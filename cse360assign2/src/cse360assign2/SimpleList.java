@@ -1,8 +1,10 @@
-/*Author: Hans Husurianto
-Class ID: 156
-Assignment Number: 2
-Description: This is the SimpleList class which defines the object "SimpleList"
-and its methods: add(int n), remove(int n), count(), toString(), and search()
+/**
+ * Author: Hans Husurianto
+ * Class ID: 156
+ * Assignment Number: 2
+ * Description: This is the SimpleList class which defines the object "SimpleList"
+ * and its methods: add(int n), remove(int n), count(), toString(), search(),
+ *					append(int n), first(), and size().
  */
 
 package cse360assign2;
