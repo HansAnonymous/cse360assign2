@@ -42,6 +42,26 @@ public class SimpleList {
 	}
 	
 	/**
+	 * Append a number to the end of the list in SimpleList
+	 * If the list is already full, then increase the size
+	 * of the list by 50%
+	 * 
+	 * @param number	the number to be added to the end of the lsit
+	 */
+	public void append(int number) {
+		int newSize = this.size();
+		if(this.count == this.size()) {
+			newSize = this.size() + this.size() / 2;
+		}
+		int[] tempList = new int[newSize];
+
+		System.arraycopy(this.list, 0, tempList, 0, this.count());
+		this.list = tempList;
+		this.list[this.count] = number;
+		this.count++;
+	}
+	
+	/**
      * Removes a number from the SimpleList object if it exists.
      * If it does not exist, then nothing happens.
      * This uses the search(number) method to get the location of the
@@ -54,19 +74,18 @@ public class SimpleList {
 	public void remove(int number) {
 		int index = search(number);
         if(index > -1) {
+        	this.count--;
             for(int iterator = index; iterator < this.list.length - 1;
                 iterator++) {
                 this.list[iterator] = this.list[iterator + 1];
             }
-            this.count--;
+            float emptySpace = (float) this.list.length - (float) this.count;
+    		if ( (emptySpace / (float) this.list.length) > 0.25 ) {
+    			int[] tempList = this.list;
+    			this.list = new int[this.list.length-1];
+    			System.arraycopy(tempList, 0, this.list, 0, this.count);
+    		}
         }
-		
-		float emptySpace = (float) this.list.length - (float) this.count;
-		if ( (emptySpace / (float) this.list.length) > 0.25 ) {
-			int[] tempList = this.list;
-			this.list = new int[this.list.length-1];
-			System.arraycopy(tempList, 0, this.list, 0, this.count);
-		}
 	}
 	
 	/**
@@ -94,6 +113,7 @@ public class SimpleList {
      *
      * @return  a string of the elements in the list
      */
+	
 	public String toString() {
 		String result = "";
         for(int iterator = 0; iterator < this.count; iterator++) {
@@ -104,6 +124,15 @@ public class SimpleList {
         }
         return result;
     }
+	
+	/**
+	 * function that returns the first element in the list
+	 * 
+	 * @return	an integer which is the first element of the list
+	 */
+	public int first() {
+		return this.list[0];
+	}
 	
 
 	/**

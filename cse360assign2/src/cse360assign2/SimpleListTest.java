@@ -19,7 +19,7 @@ class SimpleListTest {
 		simplelist.add(2);
 		simplelist.add(1);
 		
-		assertEquals(simplelist.search(1), 0);
+		assertEquals(0, simplelist.search(1));
 	}
 
 	@Test
@@ -37,7 +37,7 @@ class SimpleListTest {
 		simplelist.add(2);
 		simplelist.add(1);		
 		
-		assertEquals(simplelist.count(), 10);
+		assertEquals(10, simplelist.count());
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ class SimpleListTest {
 		simplelist.append(2);
 		simplelist.append(3);
 		
-		assertEquals(simplelist.search(3), 2);
+		assertEquals(2, simplelist.search(3));
 	}
 
 	@Test
@@ -65,37 +65,89 @@ class SimpleListTest {
 		simplelist.append(10);
 		simplelist.append(11);
 		
-		assertEquals(simplelist.count(), 11);
+		assertEquals(11, simplelist.count());
 	}
 
 	@Test
-	void testRemove() {
+	void testRemoveCount() {
 		SimpleList simplelist = new SimpleList();
+		simplelist.append(1);
+		simplelist.append(2);
+		simplelist.append(3);
+		simplelist.remove(2);
+		
+		assertEquals(2, simplelist.count());
+	}
+	
+	@Test
+	void testRemoveShifted() {
+		SimpleList simplelist = new SimpleList();
+		simplelist.append(1);
+		simplelist.append(2);
+		simplelist.append(3);
+		simplelist.remove(2);
+		
+		assertEquals(1, simplelist.search(3));
 	}
 
 	@Test
 	void testCount() {
-		fail("Not yet implemented");
+		SimpleList simplelist = new SimpleList();
+		simplelist.add(2);
+		simplelist.append(3);
+		simplelist.add(1);
+		simplelist.remove(3);
+		
+		assertEquals(2, simplelist.count());
 	}
 
 	@Test
 	void testSize() {
-		fail("Not yet implemented");
+		SimpleList simplelist = new SimpleList();
+		simplelist.add(2);
+		simplelist.add(1);
+		simplelist.append(3);
+		simplelist.append(3);
+		simplelist.append(4);
+		simplelist.remove(3);
+		
+		assertEquals(9, simplelist.size());
 	}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		SimpleList simplelist = new SimpleList();
+		simplelist.add(1);
+		simplelist.append(2);
+		simplelist.append(3);
+		simplelist.append(4);
+		simplelist.append(5);
+		simplelist.append(6);
+		
+		assertEquals("1 2 3 4 5 6", simplelist.toString());
 	}
 
 	@Test
 	void testFirst() {
-		fail("Not yet implemented");
+		SimpleList simplelist = new SimpleList();
+		simplelist.add(1);
+		simplelist.append(2);
+		simplelist.append(3);
+		
+		assertEquals(1, simplelist.first());
 	}
 
 	@Test
 	void testSearch() {
-		fail("Not yet implemented");
+		SimpleList simplelist = new SimpleList();
+		simplelist.add(1);
+		simplelist.append(2);
+		simplelist.append(3);
+		simplelist.append(4);
+		simplelist.append(5);
+		simplelist.append(6);
+		
+		assertEquals(3, simplelist.search(4));
 	}
 
 }
