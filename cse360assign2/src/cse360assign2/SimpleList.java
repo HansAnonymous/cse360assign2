@@ -5,6 +5,7 @@
  * Description: This is the SimpleList class which defines the object "SimpleList"
  * and its methods: add(int n), remove(int n), count(), toString(), search(),
  *					append(int n), first(), and size().
+ * Repository URL: https://github.com/HansAnonymous/cse360assign2
  */
 
 package cse360assign2;
